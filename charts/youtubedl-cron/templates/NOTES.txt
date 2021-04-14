@@ -1,0 +1,32 @@
+# Created the following CronJobs:
+{{ range .Values.CronJobs }}
+## {{ .name }}
+  - URL: {{ .url }}
+  - Schedule: {{ .schedule }}
+  - User/Group: {{ .uid }}:{{ .gid }}
+  - {{- if .ignore_errors }} Ignore{{- else }} Fail immediately on{{- end }} errors
+  - Output file name: {{ .output_template | default "%(title)s.%(ext)s" }}
+  - Download volume:
+    {{- if .job_download_volume }}
+      {{- toYaml .job_download_volume | nindent 6 }}
+    {{- else if $.Values.download_volume }}
+      {{- toYaml $.Values.download_volume | nindent 6 }}
+    {{- else }}
+      persistentVolumeClaim:
+        claimName: youtubedl-downloads
+    {{- end }}
+  {{- if .reject_title }}
+  - Skip videos with title matching {{ .reject_title | quote }}
+  {{- end }}
+  {{- if .recode_video.enabled }}
+  - Recode video to {{ .recode_video.format }} and {{- if .recode_video.keep_original }} keep {{- else }} delete {{- end }} original file
+    Encoder args: {{ .recode_video.args }}
+  {{- end }}
+  {{- if .geo_bypass_country }}
+  - Bypass geoblocking to country: {{ .geo_bypass_country }}
+  {{- end }}
+  {{- if .other_args }}
+  - Other args:
+    {{- toYaml .other_args | nindent 4 }}
+  {{- end }}
+{{ end }}

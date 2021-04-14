@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart to set up cron jobs for youtube-dl
+icon: https://upload.wikimedia.org/wikipedia/commons/b/b1/Antu_youtube-dl.svg
+name: youtubedl-cron
+version: 0.1

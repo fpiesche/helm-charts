@@ -1,0 +1,27 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from the k8s-at-home common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: alpine
+  pullPolicy: IfNotPresent
+  tag: latest
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: UTC
+  PUID: "1000"
+  PGID: "1000"
+
+ingress:
+  enabled: false
+
+persistence:
+  config:
+    enabled: false
+    emptyDir: false
