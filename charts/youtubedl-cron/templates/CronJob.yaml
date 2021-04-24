@@ -60,20 +60,15 @@ spec:
             volumeMounts:
               - mountPath: /config
                 name: youtubedl-cron-config
-              - name: downloads
-                mountPath: /downloads
+              {{- range .additionalVolumeMounts -}}
+                {{- toYaml . | nindent 14 }}
+              {{- end }}
           volumes:
             - name: youtubedl-cron-config
               persistentVolumeClaim:
                 claimName: youtubedl-cron-config
-            - name: downloads
-              {{- if .job_download_volume }}
-              {{- toYaml .job_download_volume | nindent 14 }}
-              {{- else if $.Values.download_volume }}
-              {{- toYaml $.Values.download_volume | nindent 14 }}
-              {{- else }}
-              persistentVolumeClaim:
-                claimName: youtubedl-downloads
-              {{- end }}
+            {{- range .additionalVolumes -}}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
           restartPolicy: OnFailure
 {{- end }}
