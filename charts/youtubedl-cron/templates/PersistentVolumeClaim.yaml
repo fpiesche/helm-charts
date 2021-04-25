@@ -7,7 +7,7 @@ metadata:
     {{ toYaml .Values.persistence.annotations | nindent 4 }}
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   volumeMode: Filesystem
   resources:
     requests:
@@ -24,7 +24,7 @@ metadata:
     {{ toYaml .Values.persistence.annotations | nindent 4 }}
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   volumeMode: Filesystem
   resources:
     requests:
