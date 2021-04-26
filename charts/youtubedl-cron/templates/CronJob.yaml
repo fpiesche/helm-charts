@@ -38,19 +38,16 @@ spec:
             {{- if .recode_video.enabled }}
             - --recode-video
             - {{ .recode_video.format }}
-            - --postprocessor-args
-            - {{ .recode_video.args }}
+            - --postprocessor-args {{ .recode_video.args }}
               {{- if .recode_video.keep_original }}
             - --keep-video
               {{- end }}
             {{- end }}
             {{- if .geo_bypass_country }}
-            - --geo-bypass-country
-            - {{ .geo_bypass_country }}
+            - --geo-bypass-country {{ .geo_bypass_country }}
             {{- end }}
             {{- if .reject_title }}
-            - --reject-title
-            - {{ .reject_title }}
+            - --reject-title {{ .reject_title }}
             {{- end }}
             {{- if .other_args }}
               {{- toYaml .other_args | nindent 12 }}
