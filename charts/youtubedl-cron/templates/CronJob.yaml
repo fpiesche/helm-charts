@@ -38,16 +38,19 @@ spec:
             {{- if .recode_video.enabled }}
             - --recode-video
             - {{ .recode_video.format }}
-            - --postprocessor-args {{ .recode_video.args }}
+            - --postprocessor-args
+            - {{ .recode_video.args }}
               {{- if .recode_video.keep_original }}
             - --keep-video
               {{- end }}
             {{- end }}
             {{- if .geo_bypass_country }}
-            - --geo-bypass-country {{ .geo_bypass_country }}
+            - --geo-bypass-country
+            - {{ .geo_bypass_country }}
             {{- end }}
             {{- if .reject_title }}
-            - --reject-title {{ .reject_title }}
+            - --reject-title
+            - {{ .reject_title }}
             {{- end }}
             {{- if .other_args }}
               {{- toYaml .other_args | nindent 12 }}
@@ -57,15 +60,15 @@ spec:
             volumeMounts:
               - mountPath: /config
                 name: youtubedl-cron-config
-              {{- range .additionalVolumeMounts -}}
-                {{- toYaml . | nindent 14 }}
+              {{- range .additionalVolumeMounts }}
+                {{- toYaml . | nindent 16 }}
               {{- end }}
           volumes:
             - name: youtubedl-cron-config
               persistentVolumeClaim:
                 claimName: youtubedl-cron-config
-            {{- range .additionalVolumes -}}
-              {{- toYaml . | nindent 12 }}
+            {{- range .additionalVolumes }}
+              {{- toYaml . | nindent 14 }}
             {{- end }}
           restartPolicy: OnFailure
 {{- end }}
