@@ -61,14 +61,14 @@ spec:
               - mountPath: /config
                 name: youtubedl-cron-config
               {{- range .additionalVolumeMounts }}
-                {{- toYaml . | nindent 16 }}
+              - {{- toYaml . | nindent 16 -}}
               {{- end }}
           volumes:
             - name: youtubedl-cron-config
               persistentVolumeClaim:
                 claimName: youtubedl-cron-config
             {{- range .additionalVolumes }}
-              {{- toYaml . | nindent 14 }}
+            - {{- toYaml . | nindent 14 -}}
             {{- end }}
           restartPolicy: OnFailure
 {{- end }}
