@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: v0.13
+appVersion: v0.13.0
 description: Deployment chart for Woodpecker CI agents
 name: woodpecker-agent
 version: 1.0
