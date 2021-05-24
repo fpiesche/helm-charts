@@ -104,4 +104,4 @@ extraSecretNamesForEnvFrom: []
 
 env:
   ## The hostname/IP (and optionally the port) for the Woodpecker server
-  DRONE_SERVER: drone
+  WOODPECKER_SERVER: http://woodpecker/
