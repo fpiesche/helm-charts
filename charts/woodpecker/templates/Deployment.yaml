@@ -55,7 +55,7 @@ spec:
                 name: {{ . }}
           {{- end }}
           volumeMounts:
-            - name: sqlite-volume
+            - name: storage-volume
               mountPath: /var/lib/drone
           {{- with .Values.extraVolumeMounts }}
             {{ toYaml . | nindent 12 }}
