@@ -148,16 +148,16 @@
       "$id": "#/properties/env",
       "type": "object",
       "required": [
-        "DRONE_HOST"
+        "WOODPECKER_HOST"
       ],
       "properties": {
-        "DRONE_HOST": {
-          "$id": "#/properties/env/properties/DRONE_HOST",
+        "WOODPECKER_HOST": {
+          "$id": "#/properties/env/properties/WOODPECKER_HOST",
           "type": "string",
           "minLength": 3
         },
-        "DRONE_SECRET": {
-          "$id": "#/properties/env/properties/DRONE_SECRET",
+        "WOODPECKER_SECRET": {
+          "$id": "#/properties/env/properties/WOODPECKER_SECRET",
           "type": "string",
           "minLength": 1
         }
