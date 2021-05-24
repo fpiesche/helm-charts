@@ -36,7 +36,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8000
               protocol: TCP
             - name: grpc
               containerPort: 9000
@@ -77,7 +77,7 @@ spec:
         {{ toYaml .Values.extraVolumes | nindent 8}}
       {{- end }}
         {{/* This is where Drone stashes any data it needs to persist. If you use SQLite for your DB, state will go here. */}}
-        - name: sqlite-volume
+        - name: storage-volume
         {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "woodpecker.fullname" . }}{{- end }}
