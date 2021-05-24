@@ -135,11 +135,11 @@
         "$id": "#/properties/env",
         "type": "object",
         "required": [
-          "DRONE_SERVER"
+          "WOODPECKER_SERVER"
         ],
         "properties": {
-          "DRONE_SERVER": {
-            "$id": "#/properties/env/properties/DRONE_SERVER",
+          "WOODPECKER_SERVER": {
+            "$id": "#/properties/env/properties/WOODPECKER_SERVER",
             "type": "string",
             "minLength": 1
           }
