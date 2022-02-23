@@ -19,7 +19,8 @@ env:
   PGID: "1000"
 
 ingress:
-  enabled: false
+  main:
+    enabled: false
 
 persistence:
   config:
